@@ -19,6 +19,7 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  //jobTitle
   skills: [
     {
       type: String,
