@@ -23,7 +23,7 @@ const Header = () => {
           </h1>
         </Link> */}
         <p className="m-0" style={{ fontSize: "1.75rem", fontWeight: "700" }}>
-          Welcome to BizTrip app.
+          Welcome to BizTrip App.
         </p>
         <div>
           {Auth.loggedIn() ? (
