@@ -1,20 +1,29 @@
 [
   {
     "name": "Panos",
+    "firstName":"Panos",
+    "lastName":"Giann",
     "email": "panos@gmail.com",
     "password": "Panos01",
-    "skills": ["HTML","CSS","JavaScript", "Unix"]
+    "jobTitle": "modeller",
+    "skills": ["HTML","CSS","JavaScript", "Linux"]
   },
   {
     "name": "Tesfa",
+    "firstName":"Tesfa",
+    "lastName":"TesfaLastName",
     "email": "tesfa@gmail.com",
     "password": "Tesfa01",
-    "skills": ["HTML","CSS","JavaScript"]
+    "jobTitle": "CyberSecurity",
+    "skills": ["Developer","HTML","CSS","JavaScript"]
   },
   {
     "name": "Marco",
+    "firstName":"MarcoFirstName",
+    "lastName":"MarcoLastName",
     "email": "marco@gmail.com",
     "password": "Marco01",
+    "jobTitle": "Software Developer",
     "skills": [
       "JavaScript",
       "CSS",

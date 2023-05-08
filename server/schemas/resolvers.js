@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
+const { Profile, Trip, TripWayPoint } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -18,7 +18,27 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+     // queries for Trip and TripWayPoint
+     trips: async () => {
+      return Trip.find().populate('path');
+    },
+
+    trip: async (parent, { tripId }) => {
+      return Trip.findOne({ _id: tripId }).populate('path');
+    },
+
+    tripWayPoints: async () => {
+      return TripWayPoint.find();
+    },
+
+    tripWayPoint: async (parent, { tripWayPointId }) => {
+      return TripWayPoint.findOne({ _id: tripWayPointId });
+    },
   },
+
+
+//MUTATIONS------------------
 
   Mutation: {
     addProfile: async (parent, { name, email, password }) => {
@@ -79,6 +99,22 @@ const resolvers = {
         );
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+    //Mutations for Trip and TripWayPoint
+    addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved, path }) => {
+      return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
+    },
+
+    addTripWayPoint: async (parent, { name, lon, lat }) => {
+      return TripWayPoint.create({ name, lon, lat });
+    },
+
+    removeTrip: async (parent, { tripId }) => {
+      return Trip.findOneAndDelete({ _id: tripId });
+    },
+
+    removeTripWayPoint: async (parent, { tripWayPointId }) => {
+      return TripWayPoint.findOneAndDelete({ _id: tripWayPointId });
     },
   },
 };
