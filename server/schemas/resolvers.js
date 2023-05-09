@@ -27,6 +27,10 @@ const resolvers = {
     trip: async (parent, { tripId }) => {
       return Trip.findOne({ _id: tripId }).populate('path');
     },
+    
+    userTrips: async (parent, { userId }) => {
+      return Trip.find({ user: userId }).populate('path');
+    },
 
     tripWayPoints: async () => {
       return TripWayPoint.find();
@@ -38,6 +42,7 @@ const resolvers = {
   },
 
 
+
 //MUTATIONS------------------
 
   Mutation: {
@@ -47,6 +52,18 @@ const resolvers = {
 
       return { token, profile };
     },
+
+
+
+    // addProfile: async (parent, { name, firstName, lastName, email, password, jobTitle }) => {
+    //   const profile = await Profile.create({ name, firstName, lastName, email, password, jobTitle });
+    //   const token = signToken(profile);
+    
+    //   return { token, profile };
+    // },
+    
+
+
     login: async (parent, { email, password }) => {
       const profile = await Profile.findOne({ email });
 
@@ -104,11 +121,37 @@ const resolvers = {
     addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved, path }) => {
       return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
     },
-
+    updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
+      return Trip.findOneAndUpdate(
+        { _id: tripId },
+        {
+          firstName,
+          lastName,
+          fromDateTime,
+          toDateTime,
+          managerName,
+          approved,
+        },
+        { new: true }
+      );
+    },
+  
     addTripWayPoint: async (parent, { name, lon, lat }) => {
       return TripWayPoint.create({ name, lon, lat });
     },
 
+    updateTripWayPoint: async (parent, { tripWayPointId, name, lon, lat }) => {
+      return TripWayPoint.findOneAndUpdate(
+        { _id: tripWayPointId },
+        {
+          name,
+          lon,
+          lat,
+        },
+        { new: true }
+      );
+    },
+  
     removeTrip: async (parent, { tripId }) => {
       return Trip.findOneAndDelete({ _id: tripId });
     },

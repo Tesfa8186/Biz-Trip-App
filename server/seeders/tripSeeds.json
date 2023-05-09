@@ -1,35 +1,39 @@
- [
-    {
-      "id": 1,
-      "firstName": "Panos",
-      "lastName": "PanosLastName",
-      "fromDateTime": "2023-06-01T08:00:00.000Z",
-      "toDateTime": "2023-06-07T18:00:00.000Z",
-      "managerName": "Lucky Look",
-      "approved": true,
-      "path": [1, 2, 3, 4, 5]
-    },
-    {
-        "id": 1,
-        "firstName": "Tesfa",
-        "lastName": "TesfaLastName",
-        "fromDateTime": "2023-06-01T08:00:00.000Z",
-        "toDateTime": "2023-06-07T18:00:00.000Z",
-        "managerName": "Micky Mouse",
-        "approved": true,
-        "path": [1, 3, 4, 5]
-      },
-      {
-        "id": 1,
-        "firstName": "MarcoFirstName",
-        "lastName": "MarcoLastName",
-        "fromDateTime": "2023-06-01T08:00:00.000Z",
-        "toDateTime": "2023-06-07T18:00:00.000Z",
-        "managerName": "Elon Musk",
-        "approved": true,
-        "path": [1, 2, 4, 5]
-      }
-  ]
-  
-
-  
+[
+  {
+    "firstName": "Panos",
+    "lastName": "PanosLastName",
+    "fromDateTime": "2023-06-01T08:00:00.000Z",
+    "toDateTime": "2023-06-07T18:00:00.000Z",
+    "managerName": "Lucky Look",
+    "approved": true,
+    "path": ["000000000000000000000000", 
+             "000000000000000000000001", 
+             "000000000000000000000002",
+             "000000000000000000000003",
+             "000000000000000000000004"]
+  },
+  {
+    "firstName": "Tesfa",
+    "lastName": "TesfaLastName",
+    "fromDateTime": "2023-06-01T08:00:00.000Z",
+    "toDateTime": "2023-06-07T18:00:00.000Z",
+    "managerName": "Micky Mouse",
+    "approved": true,
+     "path": ["000000000000000000000000", 
+              "000000000000000000000002",
+              "000000000000000000000003",
+              "000000000000000000000004"]
+  },
+  {
+    "firstName": "MarcoFirstName",
+    "lastName": "MarcoLastName",
+    "fromDateTime": "2023-06-01T08:00:00.000Z",
+    "toDateTime": "2023-06-07T18:00:00.000Z",
+    "managerName": "Elon Musk",
+    "approved": true,
+    "path": ["000000000000000000000000", 
+             "000000000000000000000001",
+             "000000000000000000000003",
+             "000000000000000000000004"]
+  }
+]

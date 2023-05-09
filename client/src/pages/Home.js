@@ -22,8 +22,6 @@ const Home = () => {
 
             <h1> This app is still under develpmemnt</h1>
 
-
-
           )}
         </div>
       </div>

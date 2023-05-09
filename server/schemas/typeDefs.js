@@ -43,6 +43,7 @@ const typeDefs = gql`
     trip(tripId: ID!): Trip
     tripWayPoints: [TripWayPoint]!
     tripWayPoint(tripWayPointId: ID!): TripWayPoint
+    userTrips(userId: ID!): [Trip]!
   }
 
   type Mutation {
@@ -53,8 +54,8 @@ const typeDefs = gql`
     removeProfile: Profile
     removeSkill(skill: String!): Profile
 
-    addTrip(firstName: String!, lastName: String!, fromDateTime: String!, toDateTime: String!, managerName: String!, approved: Boolean!): Trip
-    updateTrip(tripId: ID!, firstName: String, lastName: String, fromDateTime: String, toDateTime: String, managerName: String, approved: Boolean): Trip
+    addTrip(firstName: String!, lastName: String!, fromDateTime: String!, toDateTime: String!, managerName: String!, approved: Boolean!, path: [ID]!): Trip
+    updateTrip(tripId: ID!, firstName: String, lastName: String, fromDateTime: String, toDateTime: String, managerName: String, approved: Boolean, path: [ID]): Trip
     removeTrip(tripId: ID!): Trip
 
     addTripWayPoint(name: String!, lon: Float!, lat: Float!): TripWayPoint
