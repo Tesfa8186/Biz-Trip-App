@@ -19,7 +19,9 @@ const Home = () => {
             //   title="Here's the current roster of friends..."
             // />
 
-            <h1> This App is still under develpmemnt</h1>
+
+            <h1> This app is still under develpmemnt</h1>
+
           )}
         </div>
       </div>

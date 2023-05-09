@@ -1,13 +1,6 @@
 const { Schema, model } = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 
 const tripWayPointSchema = new Schema({
-  id: {
-    type: Number,
-    required: true,
-    unique: true,
-    trim: true,
-  },
   name: {
     type: String,
     required: true,
@@ -26,10 +19,6 @@ const tripWayPointSchema = new Schema({
     max: 90,
   },
 });
-
-// Apply the uniqueValidator plugin to the trackPointSchema
-tripWayPointSchema.plugin(uniqueValidator);
-
 
 const TripWayPoint = model('TripWayPoint', tripWayPointSchema);
 

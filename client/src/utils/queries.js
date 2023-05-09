@@ -29,3 +29,22 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_TRIPS = gql`
+  query allTrips {
+    trips {
+      _id
+      firstName
+      lastName
+      fromDateTime
+      toDateTime
+      managerName
+      approved
+      path { 
+        name
+        lat
+        lon
+      }
+    }
+  }
+`;
