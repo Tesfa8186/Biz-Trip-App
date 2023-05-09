@@ -19,13 +19,13 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-     // queries for Trip and TripWayPoint
-     trips: async () => {
-      return Trip.find().populate('path');
+    //Queries for the Trip and TripWayPoint Models:
+    trips: async () => {
+      return Trip.find();
     },
 
     trip: async (parent, { tripId }) => {
-      return Trip.findOne({ _id: tripId }).populate('path');
+      return Trip.findOne({ _id: tripId });
     },
 
     tripWayPoints: async () => {
@@ -35,10 +35,9 @@ const resolvers = {
     tripWayPoint: async (parent, { tripWayPointId }) => {
       return TripWayPoint.findOne({ _id: tripWayPointId });
     },
+
   },
 
-
-//MUTATIONS------------------
 
   Mutation: {
     addProfile: async (parent, { name, email, password }) => {
@@ -100,23 +99,36 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    //Mutations for Trip and TripWayPoint
-    addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved, path }) => {
-      return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
-    },
 
-    addTripWayPoint: async (parent, { name, lon, lat }) => {
-      return TripWayPoint.create({ name, lon, lat });
+    //Mutations for Trips and TripWayPoints
+    addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
+      return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved });
     },
 
     removeTrip: async (parent, { tripId }) => {
       return Trip.findOneAndDelete({ _id: tripId });
     },
 
+    addTripWayPoint: async (parent, { name, lon, lat }) => {
+      return TripWayPoint.create({ name, lon, lat });
+    },
+
     removeTripWayPoint: async (parent, { tripWayPointId }) => {
       return TripWayPoint.findOneAndDelete({ _id: tripWayPointId });
     },
+
   },
+
+
+
+
+
+  },
+
+
+
+
+
 };
 
 module.exports = resolvers;

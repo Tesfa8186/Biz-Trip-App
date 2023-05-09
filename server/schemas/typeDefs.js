@@ -4,9 +4,30 @@ const typeDefs = gql`
   type Profile {
     _id: ID
     name: String
+    firstName: String
+    lastName: String
     email: String
     password: String
+    jobTitle: String
     skills: [String]!
+  }
+
+  type Trip {
+    _id: ID
+    firstName: String
+    lastName: String
+    fromDateTime: String
+    toDateTime: String
+    path: [TripWayPoint]
+    managerName: String
+    approved: Boolean
+  }
+
+  type TripWayPoint {
+    _id: ID
+    name: String
+    lon: Float
+    lat: Float
   }
 
   type Auth {
@@ -17,17 +38,28 @@ const typeDefs = gql`
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: Profile
+    trips: [Trip]!
+    trip(tripId: ID!): Trip
+    tripWayPoints: [TripWayPoint]!
+    tripWayPoint(tripWayPointId: ID!): TripWayPoint
   }
 
   type Mutation {
-    addProfile(name: String!, email: String!, password: String!): Auth
+    addProfile(name: String!, firstName: String!, lastName: String!, email: String!, password: String!, jobTitle: String!): Auth
     login(email: String!, password: String!): Auth
 
     addSkill(profileId: ID!, skill: String!): Profile
     removeProfile: Profile
     removeSkill(skill: String!): Profile
+
+    addTrip(firstName: String!, lastName: String!, fromDateTime: String!, toDateTime: String!, managerName: String!, approved: Boolean!): Trip
+    updateTrip(tripId: ID!, firstName: String, lastName: String, fromDateTime: String, toDateTime: String, managerName: String, approved: Boolean): Trip
+    removeTrip(tripId: ID!): Trip
+
+    addTripWayPoint(name: String!, lon: Float!, lat: Float!): TripWayPoint
+    updateTripWayPoint(tripWayPointId: ID!, name: String, lon: Float, lat: Float): TripWayPoint
+    removeTripWayPoint(tripWayPointId: ID!): TripWayPoint
   }
 `;
 

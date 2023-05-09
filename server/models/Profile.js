@@ -8,6 +8,18 @@ const profileSchema = new Schema({
     unique: true,
     trim: true,
   },
+  firstName: {
+    type: String,
+    required: true,
+    unique: false,
+    trim: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    unique: false,
+    trim: true,
+  },
   email: {
     type: String,
     required: true,
@@ -19,7 +31,12 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  //jobTitle
+  jobTitle: {
+    type: String,
+    required: true,
+    unique: false,
+    trim: true,
+  },
   skills: [
     {
       type: String,
