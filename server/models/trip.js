@@ -1,13 +1,6 @@
 const { Schema, model } = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 
 const tripSchema = new Schema({
-  id: {
-    type: Number,
-    required: true,
-    unique: true,
-    trim: true,
-  },
   firstName: {
     type: String,
     required: true,
@@ -39,9 +32,6 @@ const tripSchema = new Schema({
     required: true,
   },
 });
-
-// Apply the uniqueValidator plugin to the tripSchema
-tripSchema.plugin(uniqueValidator);
 
 const Trip = model('Trip', tripSchema);
 
