@@ -21,6 +21,9 @@ import AllTrips from './pages/AllTrips';
 import TripDetails from './pages/TripDetails';
 import UpdateTrip from './pages/UpdateTrip';
 
+import TripList from './components/TripList';
+import EditTrip from './components/EditTrip';
+
 import './App.css';
 import './utils/fontawesome/css/all.css'
 
@@ -61,7 +64,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          
+
           <Header />
 
           <div className="container">
@@ -95,10 +98,16 @@ function App() {
                 element={<TripDetails />}
               />
 
-                <Route
+              <Route
                 path="/updatetrip"
                 element={<UpdateTrip />}
               />
+
+              <Route
+                path="/updatetrip/:id"
+                element={<UpdateTrip />}
+              />
+
             </Routes>
           </div>
 

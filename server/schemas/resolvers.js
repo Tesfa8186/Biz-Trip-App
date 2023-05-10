@@ -25,7 +25,10 @@ const resolvers = {
     },
 
     trip: async (parent, { tripId }) => {
+      console.log("tripId:", tripId); // Log the tripId to check if it is passed correctly
       return Trip.findOne({ _id: tripId }).populate('path');
+      // const trip = await Trip.findOne({ _id: tripId }).populate('path');
+      // console.log("trip:", trip); // Log the trip to check if it is being fetched correctly
     },
     
     userTrips: async (parent, { userId }) => {
@@ -53,15 +56,7 @@ const resolvers = {
       return { token, profile };
     },
 
-
-
-    // addProfile: async (parent, { name, firstName, lastName, email, password, jobTitle }) => {
-    //   const profile = await Profile.create({ name, firstName, lastName, email, password, jobTitle });
-    //   const token = signToken(profile);
-    
-    //   return { token, profile };
-    // },
-    
+  
 
 
     login: async (parent, { email, password }) => {
@@ -121,7 +116,21 @@ const resolvers = {
     addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved, path }) => {
       return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
     },
-    
+
+    // updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
+    //   return Trip.findOneAndUpdate(
+    //     { _id: tripId },
+    //     {
+    //       firstName,
+    //       lastName,
+    //       fromDateTime,
+    //       toDateTime,
+    //       managerName,
+    //       approved,
+    //     },
+    //     { new: true }
+    //   );
+    // },
     updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
       return Trip.findOneAndUpdate(
         { _id: tripId },
@@ -136,6 +145,12 @@ const resolvers = {
         { new: true }
       );
     },
+    
+
+
+
+
+    
   
     addTripWayPoint: async (parent, { name, lon, lat }) => {
       return TripWayPoint.create({ name, lon, lat });
