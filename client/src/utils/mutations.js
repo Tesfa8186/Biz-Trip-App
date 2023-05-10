@@ -64,3 +64,14 @@ export const UPDATE_TRIP = gql`
     }
   }
 `;
+
+
+export const REMOVE_TRIP = gql`
+  mutation RemoveTrip($tripId: ID!) {
+    removeTrip(tripId: $tripId) {
+      _id
+      firstName
+    }
+  }
+`;
+

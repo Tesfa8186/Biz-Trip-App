@@ -40,9 +40,9 @@ const Header = () => {
                 <Link to="/TripDetails">Add Trip</Link>
               </button>
 
-              <button className="btn btn-lg btn-light m-2">
+              {/* <button className="btn btn-lg btn-light m-2">
                 <Link to="/UpdateTrip">Edit Trip</Link>
-              </button>
+              </button> */}
               
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout

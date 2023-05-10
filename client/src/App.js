@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 import AllTrips from './pages/AllTrips';
 import TripDetails from './pages/TripDetails';
 import UpdateTrip from './pages/UpdateTrip';
+import DeleteTrip from './pages/DeleteTrip';
 
 import TripList from './components/TripList';
 import EditTrip from './components/EditTrip';
@@ -107,6 +108,12 @@ function App() {
                 path="/updatetrip/:id"
                 element={<UpdateTrip />}
               />
+
+              <Route
+                path="/deletetrip/:id"
+                element={<DeleteTrip />}
+              />
+
 
             </Routes>
           </div>
