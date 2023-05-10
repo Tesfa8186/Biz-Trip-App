@@ -48,3 +48,24 @@ export const QUERY_TRIPS = gql`
     }
   }
 `;
+
+// Add the missing GET_TRIP query
+export const GET_TRIP = gql`
+  query GetTrip($tripId: ID!) {
+    trip(tripId: $tripId) {
+      _id
+      firstName
+      lastName
+      fromDateTime
+      toDateTime
+      managerName
+      approved
+      path {
+        _id
+        name
+        lon
+        lat
+      }
+    }
+  }
+`;

@@ -43,3 +43,24 @@ export const REMOVE_SKILL = gql`
     }
   }
 `;
+
+
+export const UPDATE_TRIP = gql`
+  mutation UpdateTrip($tripId: ID!, $firstName: String, $lastName: String, $fromDateTime: String, $toDateTime: String, $managerName: String, $approved: Boolean, $path: [ID]) {
+    updateTrip(tripId: $tripId, firstName: $firstName, lastName: $lastName, fromDateTime: $fromDateTime, toDateTime: $toDateTime, managerName: $managerName, approved: $approved, path: $path) {
+      _id
+      firstName
+      lastName
+      fromDateTime
+      toDateTime
+      managerName
+      approved
+      path {
+        _id
+        name
+        lon
+        lat
+      }
+    }
+  }
+`;
