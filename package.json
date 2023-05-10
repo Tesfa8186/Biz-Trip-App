@@ -17,6 +17,8 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "mongoose-unique-validator": "^4.0.0"
+    "leaflet": "^1.9.3",
+    "mongoose-unique-validator": "^4.0.0",
+    "react-leaflet": "^4.2.1"
   }
 }

@@ -19,8 +19,10 @@ import Footer from './components/Footer';
 
 import AllTrips from './pages/AllTrips';
 import TripDetails from './pages/TripDetails';
+import UpdateTrip from './pages/UpdateTrip';
 
 import './App.css';
+import './utils/fontawesome/css/all.css'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -91,6 +93,11 @@ function App() {
               <Route
                 path="/tripdetails"
                 element={<TripDetails />}
+              />
+
+                <Route
+                path="/updatetrip"
+                element={<UpdateTrip />}
               />
             </Routes>
           </div>
