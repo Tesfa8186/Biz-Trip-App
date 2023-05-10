@@ -13,7 +13,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_TRIPS } from '../utils/queries';
-import AddTrip from '../components/AddTrip';
+import AddTrip from '../pages/AddNewTrip';
 
 const TripDetails = () => {
   const { loading, data } = useQuery(QUERY_TRIPS);
