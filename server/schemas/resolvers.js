@@ -121,6 +121,7 @@ const resolvers = {
     addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved, path }) => {
       return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
     },
+    
     updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
       return Trip.findOneAndUpdate(
         { _id: tripId },
