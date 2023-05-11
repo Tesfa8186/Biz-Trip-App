@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const TripList = ({ trips, onEdit, onDelete }) => {
+const TripList = ({ trips }) => {
   return (
     <div>
       <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
@@ -23,20 +23,17 @@ const TripList = ({ trips, onEdit, onDelete }) => {
               <td>
                 {("0" + new Date(+trip.toDateTime).getDate()).slice(-2)}/{("0" + (new Date(+trip.toDateTime).getMonth() + 1)).slice(-2)}/{new Date(+trip.toDateTime).getFullYear()}
               </td>
-              {/* <td>
-                <button onClick={() => onEdit(trip._id)}>Edit</button>
-                <button onClick={() => onDelete(trip._id)}>Delete</button>
-              </td> */}
+
 
               <td>
                 <Link to={`/updatetrip/${trip._id}`}>Edit</Link>
-                <button onClick={() => onDelete(trip._id)}>Delete</button>
-              
-            
-              
-              
+                &nbsp;
+                &nbsp;
+                <Link to={`/deletetrip/${trip._id}`}>Delete</Link>
+
+
               </td>
-              
+
             </tr>
           ))}
         </tbody>

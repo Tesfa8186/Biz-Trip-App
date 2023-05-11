@@ -20,9 +20,8 @@ import Footer from './components/Footer';
 import AllTrips from './pages/AllTrips';
 import TripDetails from './pages/TripDetails';
 import UpdateTrip from './pages/UpdateTrip';
-
-import TripList from './components/TripList';
-import EditTrip from './components/EditTrip';
+import DeleteTrip from './pages/DeleteTrip';
+import AddTrip from './pages/AddNewTrip';
 
 import './App.css';
 import './utils/fontawesome/css/all.css'
@@ -104,10 +103,20 @@ function App() {
               />
 
               <Route
+                path="/addnewtrip"
+                element={<AddTrip />}
+              />
+
+              <Route
                 path="/updatetrip/:id"
                 element={<UpdateTrip />}
               />
 
+              <Route
+                path="/deletetrip/:id"
+                element={<DeleteTrip />}
+              />
+              
             </Routes>
           </div>
 

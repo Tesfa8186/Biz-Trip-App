@@ -36,14 +36,11 @@ const Header = () => {
                 <Link to="/AllTrips">All Trips</Link>
               </button>
 
-              <button className="btn btn-lg btn-light m-2">
-                <Link to="/TripDetails">Add Trip</Link>
-              </button>
 
               <button className="btn btn-lg btn-light m-2">
-                <Link to="/UpdateTrip">Edit Trip</Link>
+                <Link to="/AddNewTrip">Add Trip</Link>
               </button>
-              
+            
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>

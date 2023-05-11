@@ -20,8 +20,8 @@ const Home = () => {
             // />
 
 
-            <h1> This app is still under develpmemnt</h1>
-
+            <h1> Have a nice trip!</h1>
+          
           )}
         </div>
       </div>

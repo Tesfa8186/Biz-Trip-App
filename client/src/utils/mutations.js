@@ -64,3 +64,32 @@ export const UPDATE_TRIP = gql`
     }
   }
 `;
+
+
+export const REMOVE_TRIP = gql`
+  mutation RemoveTrip($tripId: ID!) {
+    removeTrip(tripId: $tripId) {
+      _id
+      firstName
+    }
+  }
+`;
+
+
+
+export const ADD_TRIP = gql`
+  mutation AddTrip($firstName: String!, $lastName: String!, $fromDateTime: String!, $toDateTime: String!, $managerName: String!, $approved: Boolean!, $path: [ID]!) {
+    addTrip(firstName: $firstName, lastName: $lastName, fromDateTime: $fromDateTime, toDateTime: $toDateTime, managerName: $managerName, approved: $approved, path: $path) {
+      _id
+      firstName
+      lastName
+      fromDateTime
+      toDateTime
+      managerName
+      approved
+    }
+  }
+`;
+
+
+
