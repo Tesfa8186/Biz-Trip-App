@@ -20,8 +20,8 @@ const Home = () => {
             // />
 
 
-            <h1> Have a nice trip!</h1>
-          
+            <h1> Have a nice trip and ... take care!</h1>
+
           )}
         </div>
       </div>
