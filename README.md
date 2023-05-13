@@ -38,7 +38,7 @@
 
 ## Installation
 
-- Installation of npm packages required (`npm i, npm run seed, npm run develop`)
+- Installation of npm packages required (`npm install`)
 - Run `npm run develop` on your terminal.
 - OR use URL deployed application link on Links section.
 
