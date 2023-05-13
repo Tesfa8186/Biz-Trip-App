@@ -1,6 +1,5 @@
-const Profile = require('./Profile');
-const Trip = require('./Trip');
-const TripWayPoint = require('./TripWayPoint');
+const Profile = require("./profile");
+const Trip = require("./trip");
+const TripWayPoint = require("./tripWayPoint");
 
 module.exports = { Profile, Trip, TripWayPoint };
-
