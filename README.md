@@ -4,15 +4,12 @@
 
 ## Table of Contents
 
-- [Description](#Description)
+- [Description](#description)
 - [User Story](#user-story)
-- [Technology Used](#Technolgy)
-- [Links](#Links)
-- [Installation](#Installation)
+- [Technology Used](#technolgy-used)
+- [Links](#links)
+- [Installation](#installation)
 - [License](#license)
-- [Tests](#tests)
-- [Emotion CSS](#Emotion)
-- [Google Map](#Google)
 
 ## Description
 
@@ -33,7 +30,7 @@
 - Graphql
 - Mongodb
 - Mongoose
-- Emotion CSS/React
+- Styled-Components
 - Google Map
 
 ## Installation
@@ -41,10 +38,6 @@
 - Installation of npm packages required (`npm install`)
 - Run `npm run develop` on your terminal.
 - OR use URL deployed application link on Links section.
-
-## Tests
-
-- All tested and passed.
 
 ## Links
 
