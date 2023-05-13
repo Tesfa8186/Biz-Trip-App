@@ -48,7 +48,7 @@
 
 ## Links
 
-- [URL of the functional deployed application]()
+- [URL of the functional deployed application](https://warm-scrubland-92749.herokuapp.com/)
 - [URL of the GetHub Repository](https://github.com/Tesfa8186/BizTrip)
 
 -
