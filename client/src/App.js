@@ -68,10 +68,10 @@ function App() {
 
           <div className="container">
             <Routes>
-              <Route
+              {/* <Route
                 path="/"
                 element={<Home />}
-              />
+              /> */}
               <Route
                 path="/login"
                 element={<Login />}
