@@ -63,6 +63,30 @@ const Signup = () => {
                 />
                 <input
                   className="form-input"
+                  placeholder="Your first name"
+                  name="firstName"
+                  type="text"
+                  value={formState.firstName}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Your last name"
+                  name="lastName"
+                  type="text"
+                  value={formState.lastName}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Your job title"
+                  name="jobTitle"
+                  type="text"
+                  value={formState.jobTitle}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
                   placeholder="Your email"
                   name="email"
                   type="email"
