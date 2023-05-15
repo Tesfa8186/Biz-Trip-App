@@ -47,6 +47,7 @@
 -
 - ![Project-3 Mock-Up](./assets/Mock-Up-Page.png)
 - ![Application Page](./assets/App-Page.png)
+- ![Sign Up Page](./assets/SignUp-Page.png)
 - ![Application Login Page](./assets/Login-Page.png)
 
 ## License
