@@ -53,7 +53,8 @@
 
 - ![Project-3 Wire Frame](./assets/WireFrame-Page1.png)
 - ![Wire Frame P2](./assets/Wire-Frame-Page2.png)
--
+- ![Login Page](./assets/Login-Page.png)
+- ![Sign Up Page](./assets/SignUp-Page.png)
 
 ## Future Development
 
