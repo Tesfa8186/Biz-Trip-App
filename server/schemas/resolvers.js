@@ -3,6 +3,8 @@ const { Profile, Trip, TripWayPoint } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
+  
+  //A. QUERIES
   Query: {
     profiles: async () => {
       return Profile.find();
@@ -19,18 +21,16 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-     // queries for Trip and TripWayPoint
-     trips: async () => {
+    // queries for Trip and TripWayPoint
+    trips: async () => {
       return Trip.find().populate('path');
     },
 
     trip: async (parent, { tripId }) => {
       console.log("tripId:", tripId); // Log the tripId to check if it is passed correctly
       return Trip.findOne({ _id: tripId }).populate('path');
-      // const trip = await Trip.findOne({ _id: tripId }).populate('path');
-      // console.log("trip:", trip); // Log the trip to check if it is being fetched correctly
     },
-    
+
     userTrips: async (parent, { userId }) => {
       return Trip.find({ user: userId }).populate('path');
     },
@@ -45,20 +45,16 @@ const resolvers = {
   },
 
 
-
-//MUTATIONS------------------
-
+  //B. MUTATIONS------------------
   Mutation: {
-    addProfile: async (parent, { name, firstName, lastName, jobTitle,email, password }) => {
+    addProfile: async (parent, { name, firstName, lastName, jobTitle, email, password }) => {
       const profile = await Profile.create({ name, firstName, lastName, jobTitle, email, password });
-     
-     
+
+
       const token = signToken(profile);
 
       return { token, profile };
     },
-
-  
 
 
     login: async (parent, { email, password }) => {
@@ -119,20 +115,6 @@ const resolvers = {
       return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
     },
 
-    // updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
-    //   return Trip.findOneAndUpdate(
-    //     { _id: tripId },
-    //     {
-    //       firstName,
-    //       lastName,
-    //       fromDateTime,
-    //       toDateTime,
-    //       managerName,
-    //       approved,
-    //     },
-    //     { new: true }
-    //   );
-    // },
     updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
       return Trip.findOneAndUpdate(
         { _id: tripId },
@@ -147,13 +129,7 @@ const resolvers = {
         { new: true }
       );
     },
-    
 
-
-
-
-    
-  
     addTripWayPoint: async (parent, { name, lon, lat }) => {
       return TripWayPoint.create({ name, lon, lat });
     },
@@ -169,7 +145,7 @@ const resolvers = {
         { new: true }
       );
     },
-  
+
     removeTrip: async (parent, { tripId }) => {
       return Trip.findOneAndDelete({ _id: tripId });
     },

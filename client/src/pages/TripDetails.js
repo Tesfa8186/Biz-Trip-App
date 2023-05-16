@@ -1,15 +1,3 @@
-// const TripDetails = () =>{
-//     return(
-//         <h1>This is the TripDetails page!</h1>
-//     )
-// }
-
-// export default TripDetails;
-
-
-
-
-
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_TRIPS } from '../utils/queries';

@@ -28,34 +28,3 @@ const DeleteTrip = () => {
 };
 
 export default DeleteTrip;
-
-
-
-
-// import React, { useEffect } from 'react';
-// import { useParams, useNavigate } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
-// import { DELETE_TRIP } from '../utils/mutations';
-
-// const DeleteTrip = () => {
-//   const { id } = useParams();
-//   const navigate = useNavigate();
-//   const [deleteTrip] = useMutation(DELETE_TRIP);
-
-//   useEffect(() => {
-//     const handleDelete = async () => {
-//       await deleteTrip({ variables: { tripId: id } });
-//       navigate('/AllTrips');
-//     };
-
-//     handleDelete();
-//   }, [deleteTrip, id, navigate]);
-
-//   return (
-//     <div>
-//       <p>Deleting trip...</p>
-//     </div>
-//   );
-// };
-
-// export default DeleteTrip;

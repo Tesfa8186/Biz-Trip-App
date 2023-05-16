@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Auth from "../../utils/auth";
 
 const Header = () => {
@@ -9,19 +8,11 @@ const Header = () => {
     Auth.logout();
   };
 
-  // const tripList = (event) => {
-  //   event.preventDefault();
-  //  // Auth.logout();
-  // };
 
   return (
     <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
-        {/* <Link className="text-dark" to="/">
-          <h1 className="m-0" style={{ fontSize: '3rem' }}>
-            Tech Friends
-          </h1>
-        </Link> */}
+     
         <p className="m-0" style={{ fontSize: "1.75rem", fontWeight: "700" }}>
           Welcome to BizTrip App.
         </p>
@@ -40,14 +31,6 @@ const Header = () => {
               <button className="btn btn-lg btn-light m-2">
                 <Link to="/AddNewTrip">Add Trip</Link>
               </button>
-
-              {/* <button className="btn btn-lg btn-light m-2">
-                <Link to="/TripDetails">Add Trip</Link>
-              </button> */}
-
-              {/* <button className="btn btn-lg btn-light m-2">
-                <Link to="/UpdateTrip">Edit Trip</Link>
-              </button> */}
               
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
