@@ -6,9 +6,12 @@
 
 - [Description](#description)
 - [User Story](#user-story)
+- [Deployed](#deployed)
 - [Technology Used](#technolgy-used)
-- [Links](#links)
 - [Installation](#installation)
+- [Links](#links)
+- [Future Development](#future-development)
+- [Credit](#credit)
 - [License](#license)
 
 ## Description
@@ -18,7 +21,11 @@
 
 ## User Story
 
-- As a business traveller, I want tohave an app to plan, manage & store my trip details, so I can have controlled & safely journey.
+- As a business traveller, I want to have an app to prepare & manage my travel plan, so I can have safely journey.
+
+## Deployed
+
+- This application is deployed at Heroku on this link: https://warm-scrubland-92749.herokuapp.com/
 
 ## Technolgy Used
 
@@ -44,12 +51,25 @@
 - [URL of the functional deployed application](https://warm-scrubland-92749.herokuapp.com/)
 - [URL of the GetHub Repository](https://github.com/Tesfa8186/BizTrip)
 
+- ![Project-3 Wire Frame](./assets/WireFrame-Page1.png)
+- ![Wire Frame P2](./assets/Wire-Frame-Page2.png)
 -
-- ![Project-3 Mock-Up](./assets/Mock-Up-Page.png)
-- ![Application Page](./assets/App-Page.png)
-- ![Sign Up Page](./assets/SignUp-Page.png)
-- ![Application Login Page](./assets/Login-Page.png)
+
+## Future Development
+
+- Map display & interaction
+- More pages (OSH, Equipment, Tracking ...)
+- Document Generation
+- Electronic Signature
+- Email Genaration
+- Support
+
+## Credit
+
+- [Panos](https://github.com/PanosGian)
+
+- [Tesfa](https://github.com/Tesfa8186)
 
 ## License
 
-![license badge](https://img.shields.io/badge/license-MIT-brightgreen)
+- Covered by ![license badge](https://img.shields.io/badge/license-MIT-brightgreen)

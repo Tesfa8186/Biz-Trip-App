@@ -14,11 +14,6 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            // <ProfileList
-            //   profiles={profiles}
-            //   title="Here's the current roster of friends..."
-            // />
-
             <h1> Have a nice trip and ... take care!</h1>
           )}
         </div>
