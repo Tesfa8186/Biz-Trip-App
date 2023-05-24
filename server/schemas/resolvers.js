@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { Profile, Trip, TripWayPoint } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { Profile, Trip, TripWayPoint } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -16,23 +16,21 @@ const resolvers = {
       if (context.user) {
         return Profile.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
 
-     // queries for Trip and TripWayPoint
-     trips: async () => {
-      return Trip.find().populate('path');
+    // queries for Trip and TripWayPoint
+    trips: async () => {
+      return Trip.find().populate("path");
     },
 
     trip: async (parent, { tripId }) => {
       console.log("tripId:", tripId); // Log the tripId to check if it is passed correctly
-      return Trip.findOne({ _id: tripId }).populate('path');
-      // const trip = await Trip.findOne({ _id: tripId }).populate('path');
-      // console.log("trip:", trip); // Log the trip to check if it is being fetched correctly
+      return Trip.findOne({ _id: tripId }).populate("path");
     },
-    
+
     userTrips: async (parent, { userId }) => {
-      return Trip.find({ user: userId }).populate('path');
+      return Trip.find({ user: userId }).populate("path");
     },
 
     tripWayPoints: async () => {
@@ -44,34 +42,38 @@ const resolvers = {
     },
   },
 
-
-
-//MUTATIONS------------------
+  //MUTATIONS------------------
 
   Mutation: {
-    addProfile: async (parent, { name, firstName, lastName, jobTitle,email, password }) => {
-      const profile = await Profile.create({ name, firstName, lastName, jobTitle, email, password });
-     
-     
+    addProfile: async (
+      parent,
+      { name, firstName, lastName, jobTitle, email, password }
+    ) => {
+      const profile = await Profile.create({
+        name,
+        firstName,
+        lastName,
+        jobTitle,
+        email,
+        password,
+      });
+
       const token = signToken(profile);
 
       return { token, profile };
     },
 
-  
-
-
     login: async (parent, { email, password }) => {
       const profile = await Profile.findOne({ email });
 
       if (!profile) {
-        throw new AuthenticationError('No profile with this email found!');
+        throw new AuthenticationError("No profile with this email found!");
       }
 
       const correctPw = await profile.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect password!');
+        throw new AuthenticationError("Incorrect password!");
       }
 
       const token = signToken(profile);
@@ -94,14 +96,14 @@ const resolvers = {
         );
       }
       // If user attempts to execute this mutation and isn't logged in, throw an error
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     // Set up mutation so a logged in user can only remove their profile and no one else's
     removeProfile: async (parent, args, context) => {
       if (context.user) {
         return Profile.findOneAndDelete({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     // Make it so a logged in user can only remove a skill from their own profile
     removeSkill: async (parent, { skill }, context) => {
@@ -112,11 +114,30 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     //Mutations for Trip and TripWayPoint
-    addTrip: async (parent, { firstName, lastName, fromDateTime, toDateTime, managerName, approved, path }) => {
-      return Trip.create({ firstName, lastName, fromDateTime, toDateTime, managerName, approved, path });
+    addTrip: async (
+      parent,
+      {
+        firstName,
+        lastName,
+        fromDateTime,
+        toDateTime,
+        managerName,
+        approved,
+        path,
+      }
+    ) => {
+      return Trip.create({
+        firstName,
+        lastName,
+        fromDateTime,
+        toDateTime,
+        managerName,
+        approved,
+        path,
+      });
     },
 
     // updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
@@ -133,7 +154,18 @@ const resolvers = {
     //     { new: true }
     //   );
     // },
-    updateTrip: async (parent, { tripId, firstName, lastName, fromDateTime, toDateTime, managerName, approved }) => {
+    updateTrip: async (
+      parent,
+      {
+        tripId,
+        firstName,
+        lastName,
+        fromDateTime,
+        toDateTime,
+        managerName,
+        approved,
+      }
+    ) => {
       return Trip.findOneAndUpdate(
         { _id: tripId },
         {
@@ -147,13 +179,7 @@ const resolvers = {
         { new: true }
       );
     },
-    
 
-
-
-
-    
-  
     addTripWayPoint: async (parent, { name, lon, lat }) => {
       return TripWayPoint.create({ name, lon, lat });
     },
@@ -169,7 +195,7 @@ const resolvers = {
         { new: true }
       );
     },
-  
+
     removeTrip: async (parent, { tripId }) => {
       return Trip.findOneAndDelete({ _id: tripId });
     },

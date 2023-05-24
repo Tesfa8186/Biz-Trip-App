@@ -16,7 +16,7 @@
 
 ## Description
 
-- BizTrip is a bussiness trip application to plan, manage & resolve complexity of trip inorder to have safe journey.
+- BizTrip is single MERN-Stack application helps to users, for bussiness trip to plan, manage & resolve complexity of trip inorder to have safe journey.
 - Based on OHS (WHS) safety is very important on travel, so this application created to resolve any complexity on a business trip..
 
 ## User Story
