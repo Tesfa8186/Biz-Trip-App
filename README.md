@@ -38,6 +38,7 @@
 - Graphql
 - Mongodb
 - Mongoose
+- Styled-Component(Emotion)
 - Google Map
 
 ## Installation
