@@ -29,6 +29,7 @@
 
 ## Technolgy Used
 
+- CSS
 - JavaScript
 - Node.js
 - Express
@@ -37,7 +38,6 @@
 - Graphql
 - Mongodb
 - Mongoose
-- Styled-Components
 - Google Map
 
 ## Installation
