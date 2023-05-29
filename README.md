@@ -1,6 +1,6 @@
 ## Title
 
-- BizTrip
+- BizTrip (Project 3)
 
 ## Table of Contents
 
