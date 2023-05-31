@@ -29,6 +29,7 @@
 
 ## Technolgy Used
 
+- HTML
 - CSS
 - JavaScript
 - Node.js
@@ -63,7 +64,7 @@
 - More pages (OSH, Equipment, Tracking ...)
 - Document Generation
 - Electronic Signature
-- Email Genaration
+- Email Genaration & Notofication
 - Support
 
 ## Credit
