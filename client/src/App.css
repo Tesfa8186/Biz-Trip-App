@@ -235,12 +235,12 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #0c435c;
   text-decoration: none;
 }
 
 a:hover {
-  color: #065b83;
+  color: #0f75a4;
   text-decoration: underline;
 }
 
@@ -699,11 +699,11 @@ a:hover {
 }
 
 .text-info {
-  color: #1bbc9b !important;
+  color: #10b997 !important;
 }
 
 .text-danger {
-  color: #e64c66 !important;
+  color: #c54157 !important;
 }
 
 .text-default {
