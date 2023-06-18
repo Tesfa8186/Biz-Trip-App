@@ -1,0 +1,14 @@
+/* DeleteTrip.css */
+.containerStyleDeleteTrip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .textStyle {
+    font-size: 1.5em;
+    color: #333;
+  }
+  

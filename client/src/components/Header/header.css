@@ -1,0 +1,54 @@
+/* Header.css */
+.headerStyle {
+    background-color: #17a2b8;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.containerStyle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.welcomeStyle {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.btnPrimaryStyle {
+    background-color: #007bff;
+    color: #fff;
+    margin: 0.5rem;
+    border: none;
+    font-size: 1.125rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.btnLightStyle {
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0.5rem;
+    border: none;
+    font-size: 1.125rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.btnGroup {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+.authButtons {
+    display: flex;
+  }

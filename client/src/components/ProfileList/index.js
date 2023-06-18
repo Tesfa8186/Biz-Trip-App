@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './ProfileList.css';
 
 const ProfileList = ({ profiles, title }) => {
   if (!profiles.length) {
@@ -14,9 +15,9 @@ const ProfileList = ({ profiles, title }) => {
           profiles.map((profile) => (
             <div key={profile._id} className="col-12 col-xl-6">
               <div className="card mb-3">
-                <h4 className="card-header bg-dark text-light p-2 m-0">
+                <h4 className="cardHeaderStyle"> 
                   {profile.name} <br />
-                  <span className="text-white" style={{ fontSize: '1rem' }}>
+                  <span className="textStyle"> 
                     currently has {profile.skills ? profile.skills.length : 0}{' '}
                     endorsed skill
                     {profile.skills && profile.skills.length === 1 ? '' : 's'}
@@ -24,7 +25,7 @@ const ProfileList = ({ profiles, title }) => {
                 </h4>
 
                 <Link
-                  className="btn btn-block btn-squared btn-light text-dark"
+                  className="btnStyle"  
                   to={`/profiles/${profile._id}`}
                 >
                   View and endorse their skills.
@@ -38,3 +39,4 @@ const ProfileList = ({ profiles, title }) => {
 };
 
 export default ProfileList;
+

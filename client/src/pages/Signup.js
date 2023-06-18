@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import '../styles/Signup.css'; // Assuming the CSS is in the same directory
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -17,21 +17,16 @@ const Signup = () => {
   });
   const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
 
-  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
-  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-
     try {
       const { data } = await addProfile({
         variables: { ...formState },
@@ -44,11 +39,11 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
+    <main className="mainStyle">
+      <div className="colStyle">
+        <div className="cardStyle">
+          <h4 className="cardHeaderStyleSignUp">Sign Up</h4>
+          <div className="cardBodyStyle">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -57,15 +52,15 @@ const Signup = () => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="Your username"
                   name="name"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
                 />
-                 <input
-                  className="form-input"
+                <input
+                  className="formInputStyle"
                   placeholder="Your first name"
                   name="firstName"
                   type="text"
@@ -73,15 +68,15 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="Your last name"
                   name="lastName"
                   type="text"
                   value={formState.lastName}
                   onChange={handleChange}
                 />
-               <input
-                  className="form-input"
+                <input
+                  className="formInputStyle"
                   placeholder="Your job title"
                   name="jobTitle"
                   type="text"
@@ -89,7 +84,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -97,7 +92,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="******"
                   name="password"
                   type="password"
@@ -105,17 +100,16 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
+                  className="buttonStyle"
                   type="submit"
                 >
                   Submit
                 </button>
               </form>
             )}
-
+  
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div className="errorStyle">
                 {error.message}
               </div>
             )}

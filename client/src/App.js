@@ -1,39 +1,26 @@
 import React from 'react';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
-
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-//The Router, Routes, and Route components from react-router-dom are used to manage navigation and routing within the app
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
 import AllTrips from './pages/AllTrips';
 import TripDetails from './pages/TripDetails';
 import UpdateTrip from './pages/UpdateTrip';
 import DeleteTrip from './pages/DeleteTrip';
 import AddTrip from './pages/AddNewTrip';
-
-import './App.css';
-import './utils/fontawesome/css/all.css'
+import './styles/App.css'; // Import the CSS file here
 
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -47,86 +34,126 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flexColumn justifyFlexStart min100vh">  {/* Use class names here */}
+          <Header />
+          <div className="container"> {/* Use class names here */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/me" element={<Profile />} />
+              <Route path="/profiles/:profileId" element={<Profile />} />
+              <Route path="/alltrips" element={<AllTrips />} />
+              <Route path="/tripdetails" element={<TripDetails />} />
+              <Route path="/updatetrip" element={<UpdateTrip />} />
+              <Route path="/addnewtrip" element={<AddTrip />} />
+              <Route path="/updatetrip/:id" element={<UpdateTrip />} />
+              <Route path="/deletetrip/:id" element={<DeleteTrip />} /> 
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
+}
 
-//The App() function returns the layout of the application, wrapping the entire application 
-//with ApolloProvider and passing the client instance as a prop. 
-//Inside ApolloProvider, the Router component is used to manage the app's routes
+export default App;
 
-//The Header, Footer, and main content area are wrapped with layout-related div elements.
+/*
+import React from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import { css } from '@emotion/react';
+import { jsx, css, Global, ClassNames } from '@emotion/react'
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import AllTrips from './pages/AllTrips';
+import TripDetails from './pages/TripDetails';
+import UpdateTrip from './pages/UpdateTrip';
+import DeleteTrip from './pages/DeleteTrip';
+import AddTrip from './pages/AddNewTrip';
 
-//The Routes component contains a series of Route components, 
-//each of which maps a specific path to a page component (e.g., Home, Profile, Signup, Login). 
-//The element prop is used to pass the component that should be rendered when the path is matched.
+const flexColumn = css`
+  display: flex;
+  flex-direction: column;
+`;
+
+const justifyFlexStart = css`
+  justify-content: flex-start;
+`;
+
+const min100vh = css`
+  min-height: 100vh;
+`;
+
+const container = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 10px;
+`;
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-
+        <div css={[flexColumn, justifyFlexStart, min100vh]}>
           <Header />
-
-          <div className="container">
+          <div css={container}>
             <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/me"
-                element={<Profile />}
-              />
-              <Route
-                path="/profiles/:profileId"
-                element={<Profile />}
-              />
-              <Route
-                path="/alltrips"
-                element={<AllTrips />}
-              />
-              <Route
-                path="/tripdetails"
-                element={<TripDetails />}
-              />
-
-              <Route
-                path="/updatetrip"
-                element={<UpdateTrip />}
-              />
-
-              <Route
-                path="/addnewtrip"
-                element={<AddTrip />}
-              />
-
-              <Route
-                path="/updatetrip/:id"
-                element={<UpdateTrip />}
-              />
-
-              <Route
-                path="/deletetrip/:id"
-                element={<DeleteTrip />}
-              />
-              
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/me" element={<Profile />} />
+              <Route path="/profiles/:profileId" element={<Profile />} />
+              <Route path="/alltrips" element={<AllTrips />} />
+              <Route path="/tripdetails" element={<TripDetails />} />
+              <Route path="/updatetrip" element={<UpdateTrip />} />
+              <Route path="/addnewtrip" element={<AddTrip />} />
+              <Route path="/updatetrip/:id" element={<UpdateTrip />} />
+              <Route path="/deletetrip/:id" element={<DeleteTrip />} /> 
             </Routes>
           </div>
-
           <Footer />
-
         </div>
       </Router>
     </ApolloProvider>
-
   );
 }
 
 export default App;
+*/

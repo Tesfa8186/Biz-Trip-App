@@ -1,7 +1,30 @@
+/*
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const myCache = createCache({ key: 'my-prefix-key' });
+
+ReactDOM.render(
+  <React.StrictMode>
+    <CacheProvider value={myCache}>
+      <App />
+    </CacheProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+reportWebVitals();
+*/
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom/';
-import './index.css';
-import './utils/fontawesome/css/all.css'
+//import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

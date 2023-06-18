@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+import '../styles/Login.css';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,7 +18,6 @@ const Login = (props) => {
     });
   };
 
-  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -33,7 +31,6 @@ const Login = (props) => {
       console.error(e);
     }
 
-    // clear form values
     setFormState({
       email: '',
       password: '',
@@ -41,11 +38,11 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <main className="mainStyle">
+      <div className="colStyle">
+        <div className="cardStyle">
+          <h4 className="cardHeaderStyleLogin">Login</h4>
+          <div className="cardBodyStyle">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -54,7 +51,7 @@ const Login = (props) => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -62,7 +59,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="******"
                   name="password"
                   type="password"
@@ -70,17 +67,15 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
+                  className="buttonStyle"
                   type="submit"
                 >
                   Submit
                 </button>
               </form>
             )}
-
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div className="errorStyle">
                 {error.message}
               </div>
             )}

@@ -4,6 +4,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TRIPS } from '../utils/queries';
 import { REMOVE_TRIP } from '../utils/mutations';
 
+import '../styles/DeleteTrip.css';
+
 const DeleteTrip = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const DeleteTrip = () => {
   useEffect(() => {
     const handleDelete = async () => {
       await deleteTrip({ variables: { tripId: id } });
-      await refetch(); // refetch the list of trips
+      await refetch(); 
       navigate('/alltrips');
     };
 
@@ -21,8 +23,8 @@ const DeleteTrip = () => {
   }, [deleteTrip, id, navigate, refetch]);
 
   return (
-    <div>
-      <p>Deleting trip...</p>
+    <div className="containerStyleDeleteTrip">
+      <p className="textStyle">Deleting trip...</p>
     </div>
   );
 };
