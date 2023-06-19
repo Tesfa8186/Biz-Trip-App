@@ -1,5 +1,7 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
+//import { FaTrash } from 'react-icons/fa';
+import { LuTrash } from 'react-icons/lu';
 
 import { REMOVE_SKILL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
@@ -36,7 +38,7 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
 
   return (
     <div>
-      <table className="fancyTable">
+      <table className="fancyTableSkills">
         <thead>
           <tr>
             <th>Skill</th>
@@ -55,7 +57,7 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
                       className="btnStyle"
                       onClick={() => handleRemoveSkill(skill)}
                     >
-                      X
+                      <LuTrash />
                     </button>
                   </td>
                 )}
@@ -72,12 +74,16 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
 
 export default SkillsList;
 
+
+
 /*
 import React from 'react';
 import { useMutation } from '@apollo/client';
 
 import { REMOVE_SKILL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
+import '../../utils/fontawesome/css/all.css'
+//import '../../utils/fontawesome/css/fontawesome.css';
 
 import './SkillsList.css';  
 
@@ -111,28 +117,34 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
 
   return (
     <div>
-      <div className="flex-row justify-space-between my-4">
-        {skills &&
-          skills.map((skill) => (
-            <div key={skill} className="col-12 col-xl-6">
-              <div className="card mb-3">
-                <h4 className="cardHeaderStyle">   
-                  <span>{skill}</span>
-                  {isLoggedInUser && (
-                    <button
-                      className="btnStyle" 
+      <table className="fancyTableSkills">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            {isLoggedInUser && <th>Action</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {skills &&
+            skills.map((skill) => (
+              <tr key={skill}>
+                <td className="skillName">{skill}</td>
+
+                {isLoggedInUser && (
+                  <td>
+                    <i
+                      className="fa fa-trash btnStyle"
                       onClick={() => handleRemoveSkill(skill)}
-                    >
-                      X
-                    </button>
-                  )}
-                </h4>
-              </div>
-            </div>
-          ))}
-      </div>
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                )}
+              </tr>
+            ))}
+        </tbody>
+      </table>
       {error && (
-        <div className="errorStyle">{error.message}</div>  
+        <div className="errorStyle">{error.message}</div>
       )}
     </div>
   );

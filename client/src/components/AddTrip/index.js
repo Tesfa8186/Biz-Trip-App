@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+import { Navigate } from 'react-router-dom';
+import Auth from '../../utils/auth'; 
 import './AddTrip.css'; 
+import AddMap from '../AddMap'
+
 
 const AddTrip = ({ trip, onSubmit }) => {
   const [firstName, setFirstName] = useState(trip ? trip.firstName : '');
@@ -10,6 +14,11 @@ const AddTrip = ({ trip, onSubmit }) => {
   const [manager, setManager] = useState(trip ? trip.manager : '');
   const [approved, setApproved] = useState(trip ? trip.approved : false);
 
+  // Check if user is authenticated
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/" />;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('handleSubmit', { firstName, lastName, fromDate, toDate, manager, approved }); // Added console log
@@ -18,7 +27,7 @@ const AddTrip = ({ trip, onSubmit }) => {
 
   return (
     <>
-      <h1>All Trips</h1>
+  
       <form onSubmit={handleSubmit} className="formStyle">
         <label htmlFor="firstName">First Name:</label>
         <input id="firstName" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
@@ -40,9 +49,9 @@ const AddTrip = ({ trip, onSubmit }) => {
 
         <button type="submit" className="buttonStyle">Submit</button>
       </form>
-      {/* <div style={{ width: '100%', height: '400px' }}>
-            {<AddMap />}
-      </div> */}
+      <div style={{ width: '100%', height: '400px' }}>
+            {/* {<AddMap />} */}
+      </div>
     </>
   );
 };

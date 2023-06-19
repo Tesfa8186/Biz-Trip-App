@@ -1,24 +1,24 @@
 /* SkillsList.css */
 
-.fancyTable {
+.fancyTableSkills {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
   }
   
-  .fancyTable thead th {
+  .fancyTableSkills thead th {
     background-color: lightblue;
     color: black;
     text-align: left;
   }
   
-  .fancyTable tbody tr:nth-child(even) {
+  .fancyTableSkills tbody tr:nth-child(even) {
     background-color: #f2f2f2;
   }
   
   .btnStyle {
-    background-color: white;
-    color: black;
+    background-color: rgb(243, 238, 238);
+    color: rgb(213, 58, 58);
     border: none;
     cursor: pointer;
   }
@@ -31,7 +31,7 @@
   }
   
   .skillName {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: blue;
 }
