@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_SKILL } from '../../utils/mutations';
-
 import Auth from '../../utils/auth';
+
+import './SkillForm.css'; 
 
 const SkillForm = ({ profileId }) => {
   const [skill, setSkill] = useState('');
@@ -13,6 +14,12 @@ const SkillForm = ({ profileId }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    // Validate skill length
+    if (skill.length < 4 || skill.length > 30) {
+      alert('Invalid skill. The skill should have between 4 and 30 characters.');
+      return;
+    }
 
     try {
       const data = await addSkill({
@@ -38,18 +45,18 @@ const SkillForm = ({ profileId }) => {
             <input
               placeholder="Endorse some skills..."
               value={skill}
-              className="form-input w-100"
+              className="formInputStyle" 
               onChange={(event) => setSkill(event.target.value)}
             />
           </div>
 
           <div className="col-12 col-lg-3">
-            <button className="btn btn-info btn-block py-3" type="submit">
+            <button className="btnStyleEndorse" type="submit"> 
               Endorse Skill
             </button>
           </div>
           {error && (
-            <div className="col-12 my-3 bg-danger text-white p-3">
+            <div className="errorStyle"> 
               {error.message}
             </div>
           )}

@@ -1,0 +1,11 @@
+.mainStyle {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .divStyle {
+    width: 100%;
+    max-width: 40rem;
+    margin: 1.5rem auto;
+  }
+  

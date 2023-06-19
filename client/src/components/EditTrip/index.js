@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
 import { UPDATE_TRIP } from '../../utils/mutations';
 
+import './EditTrip.css'; 
+
 const EditTrip = ({ trip, onSubmit }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -56,10 +58,11 @@ const EditTrip = ({ trip, onSubmit }) => {
     });
     navigate('/triplist');
   };
+
   return (
     <>
       <h1>Edit Trip</h1>
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.5rem', alignItems: 'center' }}>
+      <form onSubmit={handleSubmit} className="formStyle">
         <label htmlFor="firstName">First Name:</label>
         <input id="firstName" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
 
@@ -78,11 +81,10 @@ const EditTrip = ({ trip, onSubmit }) => {
         <label htmlFor="approved">Approved:</label>
         <input id="approved" type="checkbox" checked={approved} onChange={() => setApproved(!approved)} />
 
-        <button type="submit" style={{ gridColumn: 'span 2' }}>Submit</button>
+        <button type="submit" className="buttonStyle">Submit</button>
       </form>
     </>
   );
 };
 
 export default EditTrip;
-

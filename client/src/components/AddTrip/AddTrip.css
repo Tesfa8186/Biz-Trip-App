@@ -1,0 +1,12 @@
+/* AddTrip.css */
+.formStyle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .buttonStyle {
+    grid-column: span 2;
+  }
+  

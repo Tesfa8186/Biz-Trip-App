@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_TRIPS } from "../utils/queries";
-import { REMOVE_TRIP } from "../utils/mutations";
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_TRIPS } from '../utils/queries';
+import { REMOVE_TRIP } from '../utils/mutations';
+
+import '../styles/DeleteTrip.css';
 
 const DeleteTrip = () => {
   const { id } = useParams();
@@ -13,16 +15,16 @@ const DeleteTrip = () => {
   useEffect(() => {
     const handleDelete = async () => {
       await deleteTrip({ variables: { tripId: id } });
-      await refetch(); // refetch the list of trips
-      navigate("/alltrips");
+      await refetch(); 
+      navigate('/alltrips');
     };
 
     handleDelete();
   }, [deleteTrip, id, navigate, refetch]);
 
   return (
-    <div>
-      <p>Deleting trip...</p>
+    <div className="containerStyleDeleteTrip">
+      <p className="textStyle">Deleting trip...</p>
     </div>
   );
 };

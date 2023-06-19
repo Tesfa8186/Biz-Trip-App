@@ -1,0 +1,33 @@
+/* SkillForm.css */
+
+.formInputStyle {
+    width: 100%;
+  }
+  
+
+  
+  .errorStyleEndorse {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: danger;
+    color: white;
+    padding: 1rem;
+  }
+
+  .btnStyleEndorse {
+    background-color: rgb(173, 210, 230); /* Light Blue background */
+    color: black; /* Black text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Centered text */
+    display: inline-block;
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Animation */
+}
+
+.btnStyleEndorse:hover {
+    background-color: #2196F3; /* Blue background on hover */
+    color: white; /* White text on hover */
+}
+  
