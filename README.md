@@ -53,10 +53,10 @@
 - [URL of the functional deployed application](https://warm-scrubland-92749.herokuapp.com/)
 - [URL of the GetHub Repository](https://github.com/Tesfa8186/BizTrip)
 
-- ![Project-3 Wire Frame](./assets/WireFrame-Page1.png)
-- ![Wire Frame P2](./assets/Wire-Frame-Page2.png)
+- ![Project3 Wire Frame](./assets/Project3.png)
+- ![Mock-Up ](./assets/Mock-Up.png)
 - ![Login Page](./assets/Login-Page.png)
-- ![Sign Up Page](./assets/SignUp-Page.png)
+- ![Signup Page](./assets/Signup-Page.png)
 
 ## Future Development
 
