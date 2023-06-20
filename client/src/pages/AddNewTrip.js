@@ -4,12 +4,14 @@ import { ADD_TRIP } from '../utils/mutations';
 import AddTrip from '../components/AddTrip';
 import { useNavigate } from 'react-router-dom';
 
+import '../styles/AddNewTrip.css'; 
+
 const AddNewTrip = () => {
   const navigate = useNavigate();
   const [addTrip] = useMutation(ADD_TRIP);
 
   const handleAddTripSubmit = async (newTrip) => {
-    console.log('handleAddTripSubmit', newTrip); // Added console log
+    console.log('handleAddTripSubmit', newTrip); 
     try {
       await addTrip({
         variables: {
@@ -19,7 +21,7 @@ const AddNewTrip = () => {
           toDateTime: newTrip.toDate,
           managerName: newTrip.manager,
           approved: newTrip.approved,
-          path: [], // Add the path variable here
+          path: [], 
         },
       });
 
@@ -31,7 +33,7 @@ const AddNewTrip = () => {
 
   return (
     <div>
-      <h2>Add New Trip</h2>
+      <h2 className="titleStyle">Add New Trip</h2>
       <AddTrip onSubmit={handleAddTripSubmit} />
     </div>
   );

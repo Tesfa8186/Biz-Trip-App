@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
-
-import Auth from "../utils/auth";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import '../styles/Login.css';
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
+  const [loginError, setLoginError] = useState(null); // new state for login errors
 
-  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,7 +19,101 @@ const Login = (props) => {
     });
   };
 
-  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+      setLoginError(null); // reset the login error state on successful login
+    } catch (e) {
+      console.error(e);
+      setLoginError('Incorrect password. Please try again.'); // set login error message
+    }
+
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
+
+  return (
+    <main className="mainStyle">
+      <div className="colStyle">
+        <div className="cardStyle">
+          <h4 className="cardHeaderStyleLogin">Login</h4>
+          <div className="cardBodyStyle">
+            {Auth.loggedIn() ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="formInputStyle"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="formInputStyle"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <button
+                  className="buttonStyle"
+                  type="submit"
+                >
+                  Submit
+                </button>
+                {loginError && <p>{loginError}</p>} {/* display login error */}
+              </form>
+            )}
+            {error && (
+              <div className="errorStyle">
+                {error.message}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default Login;
+
+
+/*
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import '../styles/Login.css';
+
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -33,28 +127,27 @@ const Login = (props) => {
       console.error(e);
     }
 
-    // clear form values
     setFormState({
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     });
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <main className="mainStyle">
+      <div className="colStyle">
+        <div className="cardStyle">
+          <h4 className="cardHeaderStyleLogin">Login</h4>
+          <div className="cardBodyStyle">
             {data ? (
               <p>
-                Success! You may now head{" "}
+                Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -62,7 +155,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="formInputStyle"
                   placeholder="******"
                   name="password"
                   type="password"
@@ -70,17 +163,15 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: "pointer" }}
+                  className="buttonStyle"
                   type="submit"
                 >
                   Submit
                 </button>
               </form>
             )}
-
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div className="errorStyle">
                 {error.message}
               </div>
             )}
@@ -92,3 +183,4 @@ const Login = (props) => {
 };
 
 export default Login;
+*/
