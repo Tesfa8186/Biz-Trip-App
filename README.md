@@ -53,7 +53,7 @@
 - [URL of the functional deployed application](https://warm-scrubland-92749.herokuapp.com/)
 - [URL of the GetHub Repository](https://github.com/Tesfa8186/BizTrip)
 
-- ![Project3 Wire Frame](./assets/Project3.png)
+- ![Wire Frame](./assets/Project3.png)
 - ![Mock-Up ](./assets/Mock-Up.png)
 - ![Login Page](./assets/Login-Page.png)
 - ![Signup Page](./assets/Signup-Page.png)
@@ -64,7 +64,7 @@
 - More pages (OSH, Equipment, Tracking ...)
 - Document Generation
 - Electronic Signature
-- Email Genaration & Notofication
+- Email Genaration & Notification
 - Support
 
 ## Credit
